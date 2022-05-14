@@ -1,0 +1,11 @@
+{
+  "name": "frontend-todolist",
+  "version": "1.0.0",
+  "description": "The frontend of a To do list app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "ArTrok",
+  "license": "ISC"
+}

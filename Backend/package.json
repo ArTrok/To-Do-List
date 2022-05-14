@@ -1,0 +1,11 @@
+{
+  "name": "backend-todolist",
+  "version": "1.0.0",
+  "description": "The Backend of a To do list app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "author": "ArTrok",
+  "license": "ISC"
+}
