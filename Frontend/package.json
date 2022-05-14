@@ -7,5 +7,21 @@
     "test": "jest"
   },
   "author": "ArTrok",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "framer-motion": "^6.3.3",
+    "react": "^18.1.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
+    "gh-pages": "^4.0.0",
+    "lint": "^0.7.0",
+    "mini-css-extract-plugin": "^2.6.0"
+  }
 }
