@@ -32,7 +32,7 @@ describe('Testing Main Page', () => {
       expect(progressField).toBeInTheDocument();
     });
 
-    test('Should fill all fileds and hit create to add a new task', () => {
+    test('Should fill all fileds and hit create to add a new task', async () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
       const createTaskButton = screen.getByRole('button', { name: /create task/i });
@@ -49,6 +49,8 @@ describe('Testing Main Page', () => {
       userEvent.type(detailsField, "A very important activity that will change my life");
       userEvent.type(progressField, "pending");
       userEvent.click(createTaskButton);
+      const taskCreatedText = await screen.findByText(/task created/i);
+      expect(taskCreatedText).toBeInTheDocument();
     });
   })
 })
