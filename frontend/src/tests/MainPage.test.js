@@ -1,6 +1,6 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen, fireEvent } from '@testing-library/react';
+// import fireEvent from '@testing-library/user-event';
 import renderWithRouter from './RenderWithRouter';
 import App from '../App';
 import axios from 'axios';
@@ -39,15 +39,17 @@ describe('Testing Main Page', () => {
       expect(addTaskButton).toBeInTheDocument();
     });
 
-    test('Should have fileds "Date, Time, Title, Details and Progress" to add a new task', () => {
+    test('Should have fileds "Date, Time, Title, Details and Progress" to add a new task', async () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
-      userEvent.click(addTaskButton);
-      const dateField = screen.getByRole('input', { name: /date/i });
-      const timeField = screen.getByRole('input', { name: /time/i });
-      const titleField = screen.getByRole('input', { name: /title/i });
-      const detailsField = screen.getByRole('input', { name: /details/i });
-      const progressField = screen.getByRole('input', { name: /progress/i });
+      fireEvent.click(addTaskButton);
+
+      const dateField = screen.getByTestId('date');
+      const timeField = screen.getByTestId('time');
+      const titleField = screen.getByTestId('title');
+      const detailsField = screen.getByTestId('details');
+      const progressField = screen.getByTestId('progress');
+      
       expect(dateField).toBeInTheDocument();
       expect(timeField).toBeInTheDocument();
       expect(titleField).toBeInTheDocument();
@@ -58,23 +60,23 @@ describe('Testing Main Page', () => {
     test('Should fill all fileds and hit create to add a new task', async () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
-      userEvent.click(addTaskButton);
+      fireEvent.click(addTaskButton);
 
       const dateField = screen.getByRole('input', { name: /date/i });
       const timeField = screen.getByRole('input', { name: /time/i });
       const titleField = screen.getByRole('input', { name: /title/i });
       const detailsField = screen.getByRole('input', { name: /details/i });
       const progressField = screen.getByRole('option', { name: /progress/i });
-      userEvent.type(dateField, "06/06/2022");
-      userEvent.type(timeField, "12:00");
-      userEvent.type(titleField, "My first activity");
-      userEvent.type(detailsField, "A very important activity that will change my life");
-      userEvent.selectOptions(progressField, "pending");
+      fireEvent.type(dateField, "06/06/2022");
+      fireEvent.type(timeField, "12:00");
+      fireEvent.type(titleField, "My first activity");
+      fireEvent.type(detailsField, "A very important activity that will change my life");
+      fireEvent.selectOptions(progressField, "pending");
 
       const createTaskButton = screen.getByRole('button', { name: /create task/i });
       expect(createTaskButton).toBeInTheDocument();
 
-      userEvent.click(createTaskButton);
+      fireEvent.click(createTaskButton);
       
       const taskCreatedText = await screen.findByText(/task created/i);
       expect(taskCreatedText).toBeInTheDocument();
@@ -112,14 +114,14 @@ describe('Testing Main Page', () => {
       const editTaskButton = await screen.findByRole('button', {name: /editTask1/});
       expect(editTaskButton).toBeInTheDocument();
       
-      userEvent.click(editTaskButton);
+      fireEvent.click(editTaskButton);
       
       const taskTitle = await screen.findByRole('input', {name: /taskTitle1/});
       const taskDate = await screen.findByRole('input', {name: /taskDate1/});
       const taskTimestamp = await screen.findByRole('input', {name: /taskTimestamp1/});
       const taskCreationDate = await screen.findByRole('input', {name: /taskCreationDate1/});
       const taskDetail = await screen.findByRole('input', {name: /taskDetail1/});
-      const taskStatus = await screen.findByRole('input', {name: /taskStatus1/});
+      const taskStatus = await screen.findByRole('option', {name: /taskStatus1/});
       
       expect(taskTitle).toBeInTheDocument();
       expect(taskDate).toBeInTheDocument();
@@ -130,7 +132,7 @@ describe('Testing Main Page', () => {
 
       const updateTaskButton = await screen.findByRole('button', {name: /updateTask1/});
       expect(updateTaskButton).toBeInTheDocument();
-      userEvent.click(updateTaskButton);
+      fireEvent.click(updateTaskButton);
       expect(axios.put).toHaveBeenCalledTimes(1);
 
     });
@@ -141,7 +143,7 @@ describe('Testing Main Page', () => {
       const deleteTaskButton = await screen.findByRole('button', {name: /deleteTask1/});
       expect(deleteTaskButton).toBeInTheDocument();
 
-      userEvent.click(deleteTaskButton);
+      fireEvent.click(deleteTaskButton);
 
       const taskTitle = await screen.findByTestId("taskTitle1");
       const taskDate = await screen.findByTestId("taskDate1");
