@@ -64,12 +64,12 @@ describe('Testing Main Page', () => {
       const timeField = screen.getByRole('input', { name: /time/i });
       const titleField = screen.getByRole('input', { name: /title/i });
       const detailsField = screen.getByRole('input', { name: /details/i });
-      const progressField = screen.getByRole('input', { name: /progress/i });
+      const progressField = screen.getByRole('option', { name: /progress/i });
       userEvent.type(dateField, "06/06/2022");
       userEvent.type(timeField, "12:00");
       userEvent.type(titleField, "My first activity");
       userEvent.type(detailsField, "A very important activity that will change my life");
-      userEvent.type(progressField, "pending");
+      userEvent.selectOptions(progressField, "pending");
 
       const createTaskButton = screen.getByRole('button', { name: /create task/i });
       expect(createTaskButton).toBeInTheDocument();
