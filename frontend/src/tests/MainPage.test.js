@@ -127,6 +127,12 @@ describe('Testing Main Page', () => {
       expect(taskCreationDate).toBeInTheDocument();
       expect(taskDetail).toBeInTheDocument();
       expect(taskStatus).toBeInTheDocument();
+
+      const updateTaskButton = await screen.findByRole('button', {name: /updateTask1/});
+      expect(updateTaskButton).toBeInTheDocument();
+      userEvent.click(updateTaskButton);
+      expect(axios.put).toHaveBeenCalledTimes(1);
+
     });
 
     test("Should have delete task option", async () => {
@@ -150,6 +156,8 @@ describe('Testing Main Page', () => {
       expect(taskCreationDate).not.toBeInTheDocument();
       expect(taskDetail).not.toBeInTheDocument();
       expect(taskStatus).not.toBeInTheDocument();
+      expect(axios.delete).toHaveBeenCalledTimes(1);
+
     });
   });
 })
