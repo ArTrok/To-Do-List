@@ -52,5 +52,24 @@ describe('Testing Main Page', () => {
       const taskCreatedText = await screen.findByText(/task created/i);
       expect(taskCreatedText).toBeInTheDocument();
     });
-  })
+  });
+  describe("Task Panel", () => {
+    beforeAll(() => {
+      renderWithRouter(<App />);
+      const addTaskButton = screen.getByRole('button', { name: /add new task/i });
+      const createTaskButton = screen.getByRole('button', { name: /create task/i });
+      userEvent.click(addTaskButton);
+      const dateField = screen.getByRole('input', { name: /date/i });
+      const timeField = screen.getByRole('input', { name: /time/i });
+      const titleField = screen.getByRole('input', { name: /title/i });
+      const detailsField = screen.getByRole('input', { name: /details/i });
+      const progressField = screen.getByRole('input', { name: /progress/i });
+      userEvent.type(dateField, "06/06/2022");
+      userEvent.type(timeField, "12:00");
+      userEvent.type(titleField, "My first activity");
+      userEvent.type(detailsField, "A very important activity that will change my life");
+      userEvent.type(progressField, "pending");
+      userEvent.click(createTaskButton);
+    })
+  });
 })
