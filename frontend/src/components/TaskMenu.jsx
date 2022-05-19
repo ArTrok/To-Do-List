@@ -42,6 +42,7 @@ const TaskMenu = () => {
           setTimeout(() => setTaskCreated(false), 3000);
         }
       })
+      .catch(err => console.log(err));
   }
 
     return (
