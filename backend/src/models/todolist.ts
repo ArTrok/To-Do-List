@@ -19,4 +19,21 @@ export default class OrderModel {
         [title, details, time, date, status]);
     return insertId;
   }
+
+  public async update(id: number, title: string, details: string, time: string, date: string, status: string): Promise<void> {
+    await this.connection
+      .execute<ResultSetHeader>(`
+        UPDATE Todolist.Tasks
+        SET title = ?, details = ?, time = ?, date = ?, status = ?
+        WHERE id = ?`,
+        [title, details, time, date, status, id]);
+  }
+
+  public async destroy(id: number): Promise<number> {
+    await this.connection
+      .execute<ResultSetHeader>(
+        'DELETE FROM Todolist.Tasks WHERE id = ?',
+        [id]);
+    return 204;
+  }
 }
