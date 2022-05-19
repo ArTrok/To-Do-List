@@ -56,8 +56,8 @@ const TaskMenu = () => {
         <input type="text" name="details" data-testId='details' placeholder='Details' onChange={ handleDetailsChange } />
         <label for="cars">Status:</label>
         <select id="status" data-testId='progress' onChange={ handleStatusChange }>
-          <option value="in progress">in progress</option>
           <option value="pending">pending</option>
+          <option value="in progress">in progress</option>
           <option value="done">done</option>
         </select>
         <button aria-label='create task' onClick={ handleCreateTaskButton }>create task</button>
