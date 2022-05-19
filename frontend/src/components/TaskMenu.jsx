@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const TaskMenu = () => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [taskCreated, setTaskCreated] = useState(false);
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
   const [title, setTitle] = useState('');
@@ -32,6 +34,16 @@ const TaskMenu = () => {
     setStatus(target.value);
   }
 
+  function handleCreateTaskButton () {
+    axios.post('', { time, date, title, details, status })
+      .then(res => {
+        if (res.status === 204) {
+          setTaskCreated(true);
+          setTimeout(() => setTaskCreated(false), 3000);
+        }
+      })
+  }
+
     return (
     <div data-testId="taskMenu">
       <button aria-label='add new task' onClick={ handleAddNewTaskButton }>Add Task</button>
@@ -51,8 +63,7 @@ const TaskMenu = () => {
       </>
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
-      {/* shold change this when axios is implemented */}
-      <p>task created</p>
+      {taskCreated && <p>task created</p>}
     </div>
   )
 }

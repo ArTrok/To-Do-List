@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 const TaskPanel = () => {
   const [tasks, setTasks] = useState([]);
@@ -7,7 +7,7 @@ const TaskPanel = () => {
   useEffect(() => {
     const test = async () => {
       await axios.get('https://backend-portfolio-arthur.herokuapp.com/messager').then(res => {
-      if (res.data) {
+      if (res.status === 200) {
         setTasks(res.data);
       }
     })
@@ -19,7 +19,9 @@ const TaskPanel = () => {
 
   return (
     <div>
-      {tasks.length < 1 && "No tasks"}
+      {tasks.length < 1 ? ("No tasks") : (
+
+      )}
     </div>
   )
 }
