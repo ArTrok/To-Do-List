@@ -51,6 +51,8 @@ const TaskMenu = () => {
       </>
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
+      {/* shold change this when axios is implemented */}
+      <p>task created</p>
     </div>
   )
 }
