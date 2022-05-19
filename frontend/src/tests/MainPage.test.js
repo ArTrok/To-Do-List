@@ -49,7 +49,7 @@ describe('Testing Main Page', () => {
       const titleField = screen.getByTestId('title');
       const detailsField = screen.getByTestId('details');
       const progressField = screen.getByTestId('progress');
-      
+
       expect(dateField).toBeInTheDocument();
       expect(timeField).toBeInTheDocument();
       expect(titleField).toBeInTheDocument();
@@ -62,16 +62,16 @@ describe('Testing Main Page', () => {
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
       fireEvent.click(addTaskButton);
 
-      const dateField = screen.getByRole('input', { name: /date/i });
-      const timeField = screen.getByRole('input', { name: /time/i });
-      const titleField = screen.getByRole('input', { name: /title/i });
-      const detailsField = screen.getByRole('input', { name: /details/i });
+      const dateField = screen.getByTestId('date');
+      const timeField = screen.getByTestId('time');
+      const titleField = screen.getByTestId('title');
+      const detailsField = screen.getByTestId('details');
       const progressField = screen.getByRole('option', { name: /progress/i });
-      fireEvent.type(dateField, "06/06/2022");
-      fireEvent.type(timeField, "12:00");
-      fireEvent.type(titleField, "My first activity");
-      fireEvent.type(detailsField, "A very important activity that will change my life");
-      fireEvent.selectOptions(progressField, "pending");
+      fireEvent.paste(dateField, "06062022");
+      fireEvent.paste(timeField, "1200");
+      fireEvent.paste(titleField, "My first activity");
+      fireEvent.paste(detailsField, "A very important activity that will change my life");
+      fireEvent.select(progressField, "pending");
 
       const createTaskButton = screen.getByRole('button', { name: /create task/i });
       expect(createTaskButton).toBeInTheDocument();
