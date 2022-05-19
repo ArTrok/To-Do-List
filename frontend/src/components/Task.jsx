@@ -33,6 +33,7 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
   async function handleUpdateTaskButton () {
     await axios.put(process.env.REACT_APP_TODOLIST_ENDPOINT,
       { 
+        id,
         title: titleState.length > 0 ? titleState : title,
         details: detailsState.length > 0 ? detailsState : details,
         date: dateState.length > 0 ? dateState : date,
@@ -78,7 +79,7 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
             <input type="time" name="time" data-testid={ `taskTimestamp${ id }` } placeholder={ time } onChange={ handleTimeChange } />
             <input type="text" name='title' data-testid={ `taskTitle${ id }` } placeholder={ title } onChange={ handleTitleChange } />
             <input type="text" name="details" data-testid={ `taskDetail${ id }` } placeholder={ details } onChange={ handleDetailsChange } />
-            <label for="status">Status:</label>
+            <label htmlFor="status">Status:</label>
             <select id="status" data-testid={ `taskStatus${ id }` } placeholder={ status } onChange={ handleStatusChange }>
               <option value="pending">pending</option>
               <option value="in progress">in progress</option>

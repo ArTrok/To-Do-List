@@ -19,9 +19,9 @@ export default class TaskService {
     return [201, insertId];
   }
 
-  public async update(title: string, details: string, time: string, date: string, status: string): Promise<[number, {}]> {
-    await this.taskModel.create(title, details, time, date, status);
-    return [201, {}];
+  public async update(title: string, details: string, time: string, date: string, status: string, id: number): Promise<[number, {}]> {
+    await this.taskModel.update(id, title, details, time, date, status);
+    return [200, {}];
   }
 
   public async destroy(id: number): Promise<[number, {}]> {

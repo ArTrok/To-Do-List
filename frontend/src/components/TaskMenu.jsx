@@ -54,7 +54,7 @@ const TaskMenu = () => {
         <input type="time" name="time" data-testid='time' onChange={ handleTimeChange } />
         <input type="text" name='title' data-testid='title' placeholder='Title' onChange={ handleTitleChange } />
         <input type="text" name="details" data-testid='details' placeholder='Details' onChange={ handleDetailsChange } />
-        <label for="status">Status:</label>
+        <label htmlFor="status">Status:</label>
         <select id="status" data-testid='progress' onChange={ handleStatusChange }>
           <option value="pending">pending</option>
           <option value="in progress">in progress</option>
@@ -65,6 +65,11 @@ const TaskMenu = () => {
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
       {taskCreated && <p>task created</p>}
+      <div>
+        {/* <button onClick={  }></button>
+        <button onClick={  }></button>
+        <button onClick={  }></button> */}
+      </div>
     </div>
   )
 }
