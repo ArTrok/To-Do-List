@@ -4,7 +4,7 @@
   "description": "The Backend of a To do list app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "ts-node src/index.ts",
     "test": "mocha tests",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "nodemon": "nodemon index.js"
