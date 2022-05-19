@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 
-const Task = ({id, date, time, title, details, status, creationDate}) => {
+const Task = ({ task: { id, date, time, title, details, status, creationDate }}) => {
   return (
     <div>
       <div>

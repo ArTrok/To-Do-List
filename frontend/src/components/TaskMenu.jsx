@@ -59,7 +59,7 @@ const TaskMenu = () => {
           <option value="pending">pending</option>
           <option value="done">done</option>
         </select>
-        <button aria-label='create task'>create task</button>
+        <button aria-label='create task' onClick={ handleCreateTaskButton }>create task</button>
       </>
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
