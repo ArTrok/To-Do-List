@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const TaskMenu = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
   const [taskCreated, setTaskCreated] = useState(false);
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -34,10 +34,10 @@ const TaskMenu = () => {
     setStatus(target.value);
   }
 
-  function handleCreateTaskButton () {
-    axios.post('', { time, date, title, details, status })
+  async function handleCreateTaskButton () {
+    await axios.post('', { time, date, title, details, status })
       .then(res => {
-        if (res.status === 204) {
+        if (res.status === 201) {
           setTaskCreated(true);
           setTimeout(() => setTaskCreated(false), 3000);
         }
@@ -54,7 +54,7 @@ const TaskMenu = () => {
         <input type="time" name="time" data-testId='time' onChange={ handleTimeChange } />
         <input type="text" name='title' data-testId='title' placeholder='Title' onChange={ handleTitleChange } />
         <input type="text" name="details" data-testId='details' placeholder='Details' onChange={ handleDetailsChange } />
-        <label for="cars">Status:</label>
+        <label for="status">Status:</label>
         <select id="status" data-testId='progress' onChange={ handleStatusChange }>
           <option value="pending">pending</option>
           <option value="in progress">in progress</option>
