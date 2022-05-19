@@ -35,7 +35,7 @@ const TaskMenu = () => {
   }
 
   async function handleCreateTaskButton () {
-    await axios.post('', { time, date, title, details, status })
+    await axios.post(process.env.REACT_APP_TODOLIST_ENDPOINT, { time, date, title, details, status })
       .then(res => {
         if (res.status === 201) {
           setTaskCreated(true);

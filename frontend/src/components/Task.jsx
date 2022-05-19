@@ -31,7 +31,7 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
   }
 
   async function handleUpdateTaskButton () {
-    await axios.put('',
+    await axios.put(process.env.REACT_APP_TODOLIST_ENDPOINT,
       { 
         title: titleState.length > 0 ? titleState : title,
         details: detailsState.length > 0 ? detailsState : details,
@@ -42,7 +42,8 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
         if (res.status === 200) {
 
         }
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   function editTaskButton () {
@@ -50,7 +51,13 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
   }
 
   async function deleteTaskButton () {
-    axios.delete(`${id}`)
+    axios.delete(`${process.env.REACT_APP_TODOLIST_ENDPOINT}${id}`)
+    .then(res => {
+      if (res.status === 204) {
+
+      }
+    })
+    .catch(err => console.log(err));
   }
 
   function whatToRender() {

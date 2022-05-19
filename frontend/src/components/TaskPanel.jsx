@@ -6,7 +6,7 @@ const TaskPanel = () => {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    await axios.get('').then(res => {
+    await axios.get(process.env.REACT_APP_TODOLIST_ENDPOINT).then(res => {
     if (res.status === 200) {
       setTasks(res.data);
     }

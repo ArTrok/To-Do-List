@@ -1,7 +1,7 @@
 import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import ITask from '../interfaces/ITask';
 
-export default class OrderModel {
+export default class TaskModel {
   constructor(private connection: Pool) {
     this.connection = connection;
   }
