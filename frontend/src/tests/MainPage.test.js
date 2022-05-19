@@ -21,7 +21,7 @@ const axiosGetMock = [{
   time: "13:00",
   details: "An important activity that will change my life too",
   status: "pending",
-  creationAt: "06/06/2022",
+  createdAt: "06/06/2022",
 }];
 
 jest.mock('axios');
