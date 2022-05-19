@@ -28,18 +28,18 @@ jest.mock('axios');
 
 describe('Testing Main Page', () => {
   describe('Task Menu', () => {
-    test('Should have Menu', () => {
+    test('1 Should have Menu', () => {
       renderWithRouter(<App />);
       const menu = screen.getByTestId('taskMenu');
       expect(menu).toBeInTheDocument();
     });
-    test('Should have menu option to add a new task', () => {
+    test('2 Should have menu option to add a new task', () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
       expect(addTaskButton).toBeInTheDocument();
     });
 
-    test('Should have fileds "Date, Time, Title, Details and Progress" to add a new task', async () => {
+    test('3 Should have fileds "Date, Time, Title, Details and Progress" to add a new task', async () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
       fireEvent.click(addTaskButton);
@@ -57,7 +57,7 @@ describe('Testing Main Page', () => {
       expect(progressField).toBeInTheDocument();
     });
 
-    test('Should fill all fileds and hit create to add a new task', async () => {
+    test('4 Should fill all fileds and hit create to add a new task', async () => {
       renderWithRouter(<App />);
       const addTaskButton = screen.getByRole('button', { name: /add new task/i });
       fireEvent.click(addTaskButton);
@@ -89,7 +89,7 @@ describe('Testing Main Page', () => {
       axios.delete.mockResolvedValue({});
     });
 
-    test("Should have Titles, Dates, Timestamps, Creation date, Details and Status", () => {
+    test("5 Should have Titles, Dates, Timestamps, Creation date, Details and Status", () => {
       renderWithRouter(<App />);
 
       const tasksTitles = screen.getAllByTestId('tasksTitles');
@@ -108,7 +108,7 @@ describe('Testing Main Page', () => {
       
     });
 
-    test("Should have edit task option", async () => {
+    test("6 Should have edit task option", async () => {
       renderWithRouter(<App />);
 
       const editTaskButton = await screen.findByRole('button', {name: /editTask1/});
@@ -130,17 +130,17 @@ describe('Testing Main Page', () => {
       expect(taskDetail).toBeInTheDocument();
       expect(taskStatus).toBeInTheDocument();
 
-      const updateTaskButton = await screen.findByRole('button', {name: /updateTask1/});
+      const updateTaskButton = await screen.findByTestId('updateTask1');
       expect(updateTaskButton).toBeInTheDocument();
       fireEvent.click(updateTaskButton);
       expect(axios.put).toHaveBeenCalledTimes(1);
 
     });
 
-    test("Should have delete task option", async () => {
+    test("7 Should have delete task option", async () => {
       renderWithRouter(<App />);
 
-      const deleteTaskButton = await screen.findByRole('button', {name: /deleteTask1/});
+      const deleteTaskButton = await screen.findByTestId('deleteTask1');
       expect(deleteTaskButton).toBeInTheDocument();
 
       fireEvent.click(deleteTaskButton);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const TaskMenu = () => {
-  const [isEnabled, setIsEnabled] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(false);
   const [taskCreated, setTaskCreated] = useState(false);
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -46,16 +46,16 @@ const TaskMenu = () => {
   }
 
     return (
-    <div data-testId="taskMenu">
+    <div data-testid="taskMenu">
       <button aria-label='add new task' onClick={ handleAddNewTaskButton }>Add Task</button>
       {isEnabled &&
       <>
-        <input type="date" name="date" data-testId='date' onChange={ handleDateChange } />
-        <input type="time" name="time" data-testId='time' onChange={ handleTimeChange } />
-        <input type="text" name='title' data-testId='title' placeholder='Title' onChange={ handleTitleChange } />
-        <input type="text" name="details" data-testId='details' placeholder='Details' onChange={ handleDetailsChange } />
+        <input type="date" name="date" data-testid='date' onChange={ handleDateChange } />
+        <input type="time" name="time" data-testid='time' onChange={ handleTimeChange } />
+        <input type="text" name='title' data-testid='title' placeholder='Title' onChange={ handleTitleChange } />
+        <input type="text" name="details" data-testid='details' placeholder='Details' onChange={ handleDetailsChange } />
         <label for="status">Status:</label>
-        <select id="status" data-testId='progress' onChange={ handleStatusChange }>
+        <select id="status" data-testid='progress' onChange={ handleStatusChange }>
           <option value="pending">pending</option>
           <option value="in progress">in progress</option>
           <option value="done">done</option>
