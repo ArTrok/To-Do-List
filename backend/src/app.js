@@ -1,0 +1,13 @@
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var cors = require("cors");
+var routes_1 = require("./routes");
+require("express-async-errors");
+var middlewares_1 = require("./middlewares");
+var app = express();
+app.use(express.json());
+app.use(cors());
+app.use('/', routes_1["default"]);
+app.use(middlewares_1.errorMid);
+exports["default"] = app;
