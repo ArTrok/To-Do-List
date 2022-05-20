@@ -8,7 +8,7 @@ const TaskMenu = () => {
   const [date, setDate] = useState('');
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('pending');
 
   function handleAddNewTaskButton () {
     setIsEnabled(!isEnabled);
@@ -65,11 +65,6 @@ const TaskMenu = () => {
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
       {taskCreated && <p>task created</p>}
-      <div>
-        {/* <button onClick={  }></button>
-        <button onClick={  }></button>
-        <button onClick={  }></button> */}
-      </div>
     </div>
   )
 }

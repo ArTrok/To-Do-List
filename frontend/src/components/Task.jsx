@@ -8,7 +8,7 @@ const Task = ({ task: { id, date, time, title, details, status, createdAt }}) =>
   const [dateState, setDate] = useState('');
   const [titleState, setTitle] = useState('');
   const [detailsState, setDetails] = useState('');
-  const [statusState, setStatus] = useState('');
+  const [statusState, setStatus] = useState('pending');
 
   function handleTimeChange ({target}) {
     setTime(target.value);
