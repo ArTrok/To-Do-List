@@ -7,7 +7,7 @@ This application is being created to manage your day-to-day activities and it is
 ### To Do List App Deployed
 [Front End To Do List Application](https://to-do-list-front-end-lovat.vercel.app/)
 
-![alt text](/Peek 2022-05-20 11-59.gif)
+![alt text](/Peek2022-05-2011-59.gif)
 
 ### How to install
 
