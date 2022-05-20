@@ -26,3 +26,4 @@ Now you should be able to see the app locally. Have fun!
 
 ### Future Implementations
 - Run the app with Docker Container on both sides Back and Front.
+- ContextAPI to update task array instantly when deleted or updated.
