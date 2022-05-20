@@ -1,22 +1,11 @@
-import axios from 'axios';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Task from './Task';
 
-const TaskPanel = () => {
-  const [tasks, setTasks] = useState([]);
+const TaskPanel = ({tasks, setTasks}) => {
+
   const [, updateState] = useState();
 
-  const fetchTasks = async () => {
-    await axios.get(process.env.REACT_APP_TODOLIST_ENDPOINT).then(res => {
-    if (res.status === 200) {
-      setTasks(res.data);
-    }
-  })
-    .catch(err => console.log(err));
-  }
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  const forceUpdate = useCallback(() => updateState({}), []);
 
   function renderTasks() {
     return tasks.map((task) => (
@@ -24,7 +13,6 @@ const TaskPanel = () => {
     ))
   };
 
-const forceUpdate = useCallback(() => updateState({}), []);
 
   function sortByCreationDate () {setTasks(tasks.sort((prev, next) => {
     return Date.parse(next.createdAt) - Date.parse(prev.createdAt)
@@ -45,7 +33,7 @@ const forceUpdate = useCallback(() => updateState({}), []);
       return 0;
     })
     setTasks(sortedTask);
-  forceUpdate();
+    forceUpdate();
 };
 
   function sortByStatus () {
@@ -59,9 +47,9 @@ const forceUpdate = useCallback(() => updateState({}), []);
         return 1;
       }
       return 0;
-    })
+    });
     setTasks(sortedTask);
-  forceUpdate();
+    forceUpdate();
 };
 
   return (

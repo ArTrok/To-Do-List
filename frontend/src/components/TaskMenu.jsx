@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import TaskPanel from './TaskPanel';
 
 const TaskMenu = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -9,6 +10,20 @@ const TaskMenu = () => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [status, setStatus] = useState('pending');
+  const [tasks, setTasks] = useState([]);
+
+  const fetchTasks = async () => {
+    await axios.get(process.env.REACT_APP_TODOLIST_ENDPOINT).then(res => {
+    if (res.status === 200) {
+      setTasks(res.data);
+    }
+  })
+    .catch(err => console.log(err));
+  }
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
 
   function handleAddNewTaskButton () {
     setIsEnabled(!isEnabled);
@@ -43,6 +58,7 @@ const TaskMenu = () => {
         }
       })
       .catch(err => console.log(err));
+    fetchTasks();
   }
 
     return (
@@ -65,6 +81,7 @@ const TaskMenu = () => {
       }
       <p>{date} - {time} - {title} - {details} - Status: {status}</p>
       {taskCreated && <p>task created</p>}
+      <TaskPanel tasks={tasks} setTasks={setTasks} />
     </div>
   )
 }
