@@ -4,13 +4,14 @@
 
 This application is being created to manage your day-to-day activities and it is super simple to use.
 
-### To Do List Page Deployed
-`"Link soon to be posted here"`
+### To Do List App Deployed
+[Front End To Do List Application](https://to-do-list-front-end-lovat.vercel.app/)
+
+![alt text](/Peek2022-05-2011-59.gif)
 
 ### How to install
 
-If you want to see the app running for yourself or test on your machine and change stuff, you can easily do it with [node](https://nodejs.org/en/) installed
-on your computer.
+If you want to see the app running for yourself or test on your machine and change stuff, you can easily do it with [node](https://nodejs.org/en/) installed on your computer. Obs: I ran the project on linux-ubuntu but that's not really required.
 
 - Choose any folder on your pc, open the terminal and run the command: `git clone git@github.com:ArTrok/To-Do-List.git`
 - Then enter the new cloned folder with: `cd To-Do-List`
@@ -24,3 +25,7 @@ on your computer.
 - You can run the tests using the command: `npm test` on each `Frontend` and `Backend` folder.
 
 Now you should be able to see the app locally. Have fun!
+
+### Future Implementations
+- Run the app with Docker Container on both sides Back and Front.
+- ContextAPI to update task array instantly when deleted or updated.
