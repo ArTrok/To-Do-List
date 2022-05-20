@@ -4,7 +4,8 @@
   "description": "A Simple Task List Manager app",
   "main": "index.js",
   "scripts": {
-    "start": "cd backend && npm install && ts-node src/index.ts",
+    "heroku-prebuild": "cd backend",
+    "start": "npm install && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
