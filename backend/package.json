@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "mocha tests",
+    "test": "mocha -r ts-node/register ./tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "nodemon": "nodemon index.js"
   },
@@ -36,6 +36,10 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
+    "@types/chai-http": "4.2.0",
+    "@types/cors": "2.8.12",
+    "@types/sequelize": "4.28.10",
+    "@types/validator": "13.6.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
