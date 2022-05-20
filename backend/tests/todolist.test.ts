@@ -2,7 +2,7 @@ import * as sinon from 'sinon';
 import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
-import { app } from '../src/app';
+import app from '../src/app';
 import TaskModel from '../src/models/todolist';
 
 import { Response } from 'superagent';
