@@ -50,6 +50,11 @@ describe('When accessing POST, PUT, DELETE and GET main endpoint', () => {
       expect(chaiHttpResponse.body.user).to.be.deep.equal(axiosGetMock)
       expect(chaiHttpResponse.body[0]).to.have.property('id')
       expect(chaiHttpResponse.body[0]).to.have.property('title')
+      expect(chaiHttpResponse.body[0]).to.have.property('details')
+      expect(chaiHttpResponse.body[0]).to.have.property('date')
+      expect(chaiHttpResponse.body[0]).to.have.property('time')
+      expect(chaiHttpResponse.body[0]).to.have.property('status')
+      expect(chaiHttpResponse.body[0]).to.have.property('createdAt')
     })
   })
 });
